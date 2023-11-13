@@ -23,8 +23,8 @@ void runTestCases() {
       std::vector<int> input = testCase.first;
       std::vector<int> expected = testCase.second;
 
-      std::vector<int> result = insertionSort(input);
-      // std:: cout << result << std:: endl;
+      std::vector<int> result = insertionSortWithBinSearch(input);
+
       assert(result == expected);
    }
 
@@ -33,6 +33,7 @@ void runTestCases() {
 
 int main() {
    runTestCases();
+
 
    return 0;
 }
