@@ -4,12 +4,26 @@
 #include <map>
 #include "InsertionSort.hpp"
 #include "QuickSort.hpp"
+#include "HeapSort.hpp"
 
 std:: ostream& operator<<(std:: ostream& output, std:: vector<int> arr) {
    for (const auto &num: arr) {
       output << num << " ";
    }
    return output;
+}
+
+bool is_heap(std:: vector<int>& arr) {
+   for (int i = 0 ; i < arr.size() ; i++) {
+        if (2 * i + 1 < arr.size() && arr[i] < arr[2 * i + 1]) {
+            return false;
+        }
+        if (2 * i + 2 < arr.size() && arr[i] < arr[2 * i + 2]) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 void runTestCases() {
@@ -32,9 +46,22 @@ void runTestCases() {
    std::cout << "All test cases passed!" << std::endl;
 }
 
-int main() {
-   runTestCases();
+void testHeap() {
+   std:: vector<int> test_arr = {1, 7, 3, 4, 2};
+   int n = test_arr.size();
+   for (int i = (n - 1) / 2; i >= 0; i--) {
+      make_heap(test_arr, n, i);
+   }
 
+   std:: cout << test_arr << std:: endl;
+   if (!is_heap(test_arr)) {
+        std::cout << "make_heap does not work" << std::endl;
+   }
+}
+
+int main() {
+   
+   testHeap();
 
    return 0;
 }
