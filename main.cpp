@@ -3,6 +3,7 @@
 #include <cassert>
 #include <map>
 #include "InsertionSort.hpp"
+#include "QuickSort.hpp"
 
 std:: ostream& operator<<(std:: ostream& output, std:: vector<int> arr) {
    for (const auto &num: arr) {
@@ -23,9 +24,9 @@ void runTestCases() {
       std::vector<int> input = testCase.first;
       std::vector<int> expected = testCase.second;
 
-      std::vector<int> result = insertionSortWithBinSearch(input);
-
-      assert(result == expected);
+      quickSort(input, 0, input.size() - 1);
+      std:: cout << input << std:: endl;
+      assert(input == expected);
    }
 
    std::cout << "All test cases passed!" << std::endl;
