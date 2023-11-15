@@ -26,7 +26,6 @@ std::vector<int> countingSortDigit(std::vector<int>& list, int exp) {
     return output;
 }
 
-
 void radixSortLSD(std::vector<int>& list) {
     int maxNum = *std::max_element(list.begin(), list.end());
     for (int exp = 1; maxNum / exp > 0; exp *= 10) {

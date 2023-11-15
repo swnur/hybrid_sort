@@ -32,7 +32,7 @@ void runTestCases(char sortingAlgorithm) {
 
       switch(sortingAlgorithm) {
          case 'q': 
-            quickSort(input, 0, input.size() - 1);
+            quickSort(input);
             break;
          case 'h':
             heapSort(input);
@@ -60,10 +60,10 @@ void runTestCases(char sortingAlgorithm) {
 
 int main() {
    
-   runTestCases('q');
-   runTestCases('h');
-   runTestCases('i');
-   runTestCases('r');
+   runTestCases('q'); // running test cases on Quick Sort
+   runTestCases('h'); // running test cases on Heap Sort
+   runTestCases('i'); // running test cases on Insertion Sort
+   runTestCases('r'); // running test cases on Radix LSD(Least Significant Di) Sort
 
    return 0;
 }
