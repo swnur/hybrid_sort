@@ -6,6 +6,7 @@
 #include "QuickSort.hpp"
 #include "HeapSort.hpp"
 #include "RadixSort.hpp"
+#include "CountingSort.hpp"
 
 std:: ostream& operator<<(std:: ostream& output, std:: vector<int> arr) {
    for (const auto &num: arr) {
@@ -30,10 +31,10 @@ void runTestCases() {
       // quickSort(input, 0, input.size() - 1);
       // heapSort(input);
       // insertionSort(input);
-      radixSort(input);
-      // std:: vector<int> result = countingSort(input);
-      std:: cout << input << std:: endl;
-      assert(input == expected);
+      // radixSort(input);
+      std:: vector<int> result = countingSort(input);
+      std:: cout << result << std:: endl;
+      assert(result == expected);
    }
 
    std::cout << "All test cases passed!" << std::endl;
