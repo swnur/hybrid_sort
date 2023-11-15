@@ -16,24 +16,42 @@ std:: ostream& operator<<(std:: ostream& output, std:: vector<int> arr) {
 }
 
 
-void runTestCases() {
+void runTestCases(char sortingAlgorithm) {
    std::map<std::vector<int>, std::vector<int>> testCases = {
       {{4, 11, 3, 6, 0, 1, 8, 5}, {0, 1, 3, 4, 5, 6, 8, 11}},
-      // {{0, 0, 0, 0, 0, 0, -1}, {-1, 0, 0, 0, 0, 0, 0}},
-      // {{1, -3, 0}, {-3, 0, 1}},
+      {{0, 3, 9400, 230, 430, 2, 0}, {0, 0, 2, 3, 230, 430, 9400}},
+      {{1, 1, 1}, {1, 1, 1}},
+      {{14, 345, 1904, 200, 1}, {1, 14, 200, 345, 1904}},
       {{1, 3, 4, 5, 6, 7, 8, 9, 10}, {1, 3, 4, 5, 6, 7, 8, 9, 10}}
     };
+
 
    for (auto& testCase : testCases) {
       std::vector<int> input = testCase.first;
       std::vector<int> expected = testCase.second;
 
-      // quickSort(input, 0, input.size() - 1);
-      // heapSort(input);
-      // insertionSort(input);
-      // radixSort(input);
-      std:: vector<int> result = countingSort(input);
-      std:: cout << result << std:: endl;
+      switch(sortingAlgorithm) {
+         case 'q': 
+            quickSort(input, 0, input.size() - 1);
+            break;
+         case 'h':
+            heapSort(input);
+            break;
+         case 'i':
+            insertionSort(input);
+            break;
+         case 'r':
+            radixSortLSD(input);
+            break;
+         case 'c':
+            countingSort(input);
+            break;
+         default:
+            std::cout << "Wrong value was given" << std:: endl;
+      }
+
+      std::vector<int> result = input;
+      std::cout << result << std::endl;
       assert(result == expected);
    }
 
@@ -42,17 +60,10 @@ void runTestCases() {
 
 int main() {
    
-   std::vector<int> arr = {170, 45, 75, 90, 802, 24, 2, 66};
-    
-   std::cout << "Original array: ";
-   std:: cout << arr << std:: endl;
-
-   radixSort(arr);
-
-   std::cout << "Sorted array: ";
-   std::cout << arr << std:: endl;
-
-   runTestCases();
+   runTestCases('q');
+   runTestCases('h');
+   runTestCases('i');
+   runTestCases('r');
 
    return 0;
 }

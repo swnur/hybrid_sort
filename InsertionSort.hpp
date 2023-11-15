@@ -3,12 +3,12 @@
 
 #include <vector>
 
-int binarySearch(std:: vector<int> arr, int key, int left, int right) {
+int binarySearch(std::vector<int> list, int key, int left, int right) {
    while(left <= right) {
       int mid = left + (right - left) / 2;
-      if (arr[mid] == key) {
+      if (list[mid] == key) {
          return mid;
-      } else if (arr[mid] < key) {
+      } else if (list[mid] < key) {
          left = mid + 1;
       } else {
          right = mid - 1;
@@ -17,33 +17,33 @@ int binarySearch(std:: vector<int> arr, int key, int left, int right) {
    return left;
 }
 
-std:: vector<int> insertionSort(std:: vector<int>& arr) {
-   size_t n = arr.size();
-   for (size_t i = 1; i < n; ++i) {
-      int x = arr[i];
-      size_t j = i;
-      while (j > 0 && arr[j - 1] > x) {
-         arr[j] = arr[j - 1];
+std::vector<int> insertionSort(std::vector<int>& list) {
+   int n = list.size();
+   for (int i = 1; i < n; ++i) {
+      int x = list[i];
+      int j = i;
+      while (j > 0 && list[j - 1] > x) {
+         list[j] = list[j - 1];
          --j;
       }
-      arr[j] = x;
+      list[j] = x;
    }
-   return arr;
+   return list;
 }
 
-std:: vector<int> insertionSortWithBinSearch(std:: vector<int>& arr) {
-   size_t n = arr.size();
+std::vector<int> insertionSortWithBinSearch(std::vector<int>& list) {
+   int n = list.size();
    for (int i = 1; i < n; i++) {
-      int key = arr[i];
-      int k = binarySearch(arr, key, 0, i - 1);
+      int key = list[i];
+      int k = binarySearch(list, key, 0, i - 1);
       
       for (int j = i; j > k; --j) {
-         arr[j] = arr[j - 1];
+         list[j] = list[j - 1];
       }
 
-      arr[k] = key;
+      list[k] = key;
    }
-   return arr;
+   return list;
 }
 
 #endif

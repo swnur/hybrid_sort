@@ -3,38 +3,38 @@
 
 #include <vector>
 
-void siftDown(std:: vector<int>& arr, int i, int n) {
+void siftDown(std:: vector<int>& list, int i, int n) {
    int current = i;
    int left_child = 2 * current + 1;
    int right_child = 2 * current + 2;
 
-   if (left_child < n && arr[left_child] > arr[current]) {
+   if (left_child < n && list[left_child] > list[current]) {
       current = left_child;
    }
-   if (right_child < n && arr[right_child] > arr[current]) {
+   if (right_child < n && list[right_child] > list[current]) {
       current = right_child;
    }
 
    if (current != i) {
-      std:: swap(arr[current], arr[i]);
-      siftDown(arr, current, n);
+      std:: swap(list[current], list[i]);
+      siftDown(list, current, n);
    }
 }
 
-void buildHeap(std:: vector<int>& arr) {
-   int n = arr.size();
+void buildHeap(std:: vector<int>& list) {
+   int n = list.size();
    for (int i = n / 2 - 1; i >= 0; --i) {
-      siftDown(arr, i, n);
+      siftDown(list, i, n);
    }
 }
 
-void heapSort(std:: vector<int>& arr) {
-   buildHeap(arr);
-   int heapSize = arr.size(), n = arr.size();
+void heapSort(std:: vector<int>& list) {
+   buildHeap(list);
+   int heapSize = list.size(), n = list.size();
    for (int i = 0; i < n - 1; i++) {
-      std:: swap(arr[0], arr[n- 1 - i]);
+      std:: swap(list[0], list[n- 1 - i]);
       heapSize--;
-      siftDown(arr, 0, heapSize);
+      siftDown(list, 0, heapSize);
    }
 }
 
