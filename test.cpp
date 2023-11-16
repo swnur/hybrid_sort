@@ -2,6 +2,7 @@
 #include <vector>
 #include <cassert>
 #include <map>
+#include <algorithm>
 #include "InsertionSort.hpp"
 #include "QuickSort.hpp"
 #include "HeapSort.hpp"
@@ -40,6 +41,9 @@ void runTestCases(char sortingAlgorithm) {
          case 'i':
             insertionSort(input);
             break;
+         case 'b':
+            insertionSortWithBinSearch(input);
+            break;
          case 'r':
             radixSortLSD(input);
             break;
@@ -60,10 +64,18 @@ void runTestCases(char sortingAlgorithm) {
 
 int main() {
    
+   std:: vector<int> arr = { 2, 1, 1, 3, 4, 8, 6, 0, 5, 4 };
+
+   quickSort(arr);
+
+   assert(std::is_sorted(arr.begin(), arr.end()));
+   /*
    runTestCases('q'); // running test cases on Quick Sort
    runTestCases('h'); // running test cases on Heap Sort
    runTestCases('i'); // running test cases on Insertion Sort
-   runTestCases('r'); // running test cases on Radix LSD(Least Significant Di) Sort
+   runTestCases('b'); // running test cases on Insertion Sort with Binary Search
+   runTestCases('r'); // running test cases on Radix LSD(Least Significant Digit) Sort
+   */
 
    return 0;
 }
