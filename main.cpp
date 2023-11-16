@@ -123,7 +123,7 @@ int main() {
    const int maxTimes = 100;
    const int sizeStep = 100;
 
-   std::ofstream file_out("results2.txt");
+   std::ofstream file_out("results3.txt");
    if (!file_out.is_open()) {
       std::cerr << "Error opening file." << std::endl;
       return 1;
