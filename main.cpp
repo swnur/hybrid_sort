@@ -40,7 +40,7 @@ ns calculateSorting(std::vector<int>& list, void(*sortingAlgorithm)(std::vector<
 }
 
 void runMeasurement(int sizeStep, int maxSize, int maxTimes, std:: ofstream& file_out) {
-   file_out << "Size Insertion Heap Quick RadixLSD InsertionSorted HeapSorted QuickSorted RadixLSDSorted InsertionEqual HeapEqual QuickEqual RadixLSDEqual InsertionReversed HeapReversed QuickReversed RadixLSDReversed" << std:: endl; 
+   file_out << "Size Insertion Heap Quick RadixLSD Hybrid InsertionSorted HeapSorted QuickSorted RadixLSDSorted HybridSorted InsertionEqual HeapEqual QuickEqual RadixLSDEqual HybridEqual InsertionReversed HeapReversed QuickReversed RadixLSDReversed HybridReversed" << std:: endl; 
    for (int size = sizeStep; size <= maxSize; size += sizeStep) {
       if (size == 100) {
          sizeStep = 100;
@@ -49,21 +49,25 @@ void runMeasurement(int sizeStep, int maxSize, int maxTimes, std:: ofstream& fil
       ns total_time_heap = ns(0);
       ns total_time_quick = ns(0);
       ns total_time_radix = ns(0);
+      ns total_time_hybrid = ns(0);
 
       ns total_time_insertion_sorted = ns(0);
       ns total_time_heap_sorted = ns(0);
       ns total_time_quick_sorted = ns(0);
       ns total_time_radix_sorted = ns(0);
+      ns total_time_hybrid_sorted = ns(0);
 
       ns total_time_insertion_equal = ns(0);
       ns total_time_heap_equal = ns(0);
       ns total_time_quick_equal = ns(0);
       ns total_time_radix_equal = ns(0);
+      ns total_time_hybrid_equal = ns(0);
 
       ns total_time_insertion_reversed = ns(0);
       ns total_time_heap_reversed = ns(0);
       ns total_time_quick_reversed = ns(0);
       ns total_time_radix_reversed = ns(0);
+      ns total_time_hybrid_reversed = ns(0);
 
       for (int times = 0; times < maxTimes; ++times) {
          std::vector<int> list = generateRandomList(size);
@@ -71,7 +75,8 @@ void runMeasurement(int sizeStep, int maxSize, int maxTimes, std:: ofstream& fil
          total_time_insertion += calculateSorting(list, insertionSort);
          total_time_heap += calculateSorting(list, heapSort);
          total_time_quick += calculateSorting(list, quickSort);
-         total_time_radix += calculateSorting(list, radixSort);
+         total_time_radix += calculateSorting(list, radixSortLSD);
+         total_time_hybrid += calculateSorting(list, hybridSort);
          
          for (int i = 0; i < size; ++i) {
             list[i] = i;
@@ -80,14 +85,16 @@ void runMeasurement(int sizeStep, int maxSize, int maxTimes, std:: ofstream& fil
          total_time_insertion_sorted += calculateSorting(list, insertionSort);
          total_time_heap_sorted += calculateSorting(list, heapSort);
          total_time_quick_sorted += calculateSorting(list, quickSort);
-         total_time_radix_sorted += calculateSorting(list, radixSort);
+         total_time_radix_sorted += calculateSorting(list, radixSortLSD);
+         total_time_hybrid_sorted += calculateSorting(list, hybridSort);
 
          std::reverse(list.begin(), list.end());
 
          total_time_insertion_reversed += calculateSorting(list, insertionSort);
          total_time_heap_reversed += calculateSorting(list, heapSort);
          total_time_quick_reversed += calculateSorting(list, quickSort);
-         total_time_radix_reversed += calculateSorting(list, radixSort);
+         total_time_radix_reversed += calculateSorting(list, radixSortLSD);
+         total_time_hybrid_reversed += calculateSorting(list, hybridSort);
 
          for (int i = 0; i < size; ++i) {
             list[i] = 1;
@@ -96,8 +103,8 @@ void runMeasurement(int sizeStep, int maxSize, int maxTimes, std:: ofstream& fil
          total_time_insertion_equal += calculateSorting(list, insertionSort);
          total_time_heap_equal += calculateSorting(list, heapSort);
          total_time_quick_equal += calculateSorting(list, quickSort);
-         total_time_radix_equal += calculateSorting(list, radixSort);
-
+         total_time_radix_equal += calculateSorting(list, radixSortLSD);
+         total_time_hybrid_equal += calculateSorting(list, hybridSort);
          
       }
 
@@ -106,18 +113,22 @@ void runMeasurement(int sizeStep, int maxSize, int maxTimes, std:: ofstream& fil
          << total_time_heap.count() / maxTimes << " "
          << total_time_quick.count() / maxTimes << " "
          << total_time_radix.count() / maxTimes << " "
+         << total_time_hybrid.count() / maxTimes << " "
          << total_time_insertion_sorted.count() / maxTimes << " "
          << total_time_heap_sorted.count() / maxTimes << " "
          << total_time_quick_sorted.count() / maxTimes << " "
          << total_time_radix_sorted.count() / maxTimes << " "
+         << total_time_hybrid_sorted.count() / maxTimes << " " 
          << total_time_insertion_equal.count() / maxTimes << " "
          << total_time_heap_equal.count() / maxTimes << " "
          << total_time_quick_equal.count() / maxTimes << " "
          << total_time_radix_equal.count() / maxTimes << " "
+         << total_time_hybrid_equal.count() / maxTimes << " "
          << total_time_insertion_reversed.count() / maxTimes << " "
          << total_time_heap_reversed.count() / maxTimes << " "
          << total_time_quick_reversed.count() / maxTimes << " "
-         << total_time_radix_reversed.count() / maxTimes
+         << total_time_radix_reversed.count() / maxTimes << " "
+         << total_time_hybrid_reversed.count() / maxTimes
          << std::endl;
    }
 }
@@ -127,7 +138,7 @@ int main() {
    const int maxTimes = 100;
    const int sizeStep = 10;
 
-   std::ofstream file_out("results.txt");
+   std::ofstream file_out("final_results.txt");
    if (!file_out.is_open()) {
       std::cerr << "Error opening file." << std::endl;
       return 1;
