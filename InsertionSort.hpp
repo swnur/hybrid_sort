@@ -17,19 +17,6 @@ int binarySearch(std::vector<int> list, int key, int left, int right) {
    return left;
 }
 
-void insertionSort(std::vector<int>& list) {
-   int n = list.size();
-   for (int i = 1; i < n; ++i) {
-      int x = list[i];
-      int j = i;
-      while (j > 0 && list[j - 1] > x) {
-         list[j] = list[j - 1];
-         --j;
-      }
-      list[j] = x;
-   }
-}
-
 void insertionSortWithBinSearch(std::vector<int>& list) {
    int n = list.size();
    for (int i = 1; i < n; i++) {
@@ -41,6 +28,18 @@ void insertionSortWithBinSearch(std::vector<int>& list) {
       }
 
       list[k] = key;
+   }
+}
+
+void insertionSort(std::vector<int>& list, int left, int right) {
+   for (int i = left; i <= right; ++i) {
+      int x = list[i];
+      int j = i;
+      while (j > 0 && list[j - 1] > x) {
+         list[j] = list[j - 1];
+         --j;
+      }
+      list[j] = x;
    }
 }
 

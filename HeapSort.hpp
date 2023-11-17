@@ -28,7 +28,7 @@ void buildHeap(std:: vector<int>& list) {
    }
 }
 
-void heapSort(std:: vector<int>& list) {
+void heapSort(std:: vector<int>& list, int left, int right) {
    buildHeap(list);
    int heapSize = list.size(), n = list.size();
    for (int i = 0; i < n - 1; i++) {

@@ -34,16 +34,13 @@ int partition(std::vector<int>& list, int left, int right) {
    return j;
 }
 
-void quickSortRun(std::vector<int>& list, int left, int right) {
+void quickSort(std::vector<int>& list, int left, int right) {
    if (left < right) {
       int q = partition(list, left, right);
-      quickSortRun(list, left, q);
-      quickSortRun(list, q + 1, right);
+      quickSort(list, left, q);
+      quickSort(list, q + 1, right);
    }
 }
 
-void quickSort(std:: vector<int>& list) {
-   quickSortRun(list, 0, list.size() - 1);
-}
 
 #endif

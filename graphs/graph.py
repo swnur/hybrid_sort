@@ -10,26 +10,26 @@ with open("data", "r") as file:
         print(file.readline())
 
 data = pd.read_csv("data", delimiter=' ')
-#data = data.set_index("N")
+data = data.set_index("N")
 
 print("Loaded data:")
 print(data.head())
 
-data[["Insertion", "Heap", "Quick", "RadixLSD"]].plot(linewidth=4)
+# data[["Insertion", "Heap", "Quick", "RadixLSD"]].plot(linewidth=4)
 
-plt.savefig("full.png")
+# plt.savefig("full.png")
 
-data[["InsertionSorted", "HeapSorted", "QuickSorted", "RadixLSDSorted"]].plot(linewidth=4)
+# data[["InsertionSorted", "HeapSorted", "QuickSorted", "RadixLSDSorted"]].plot(linewidth=4)
 
-plt.savefig("full_sorted.png")
+# plt.savefig("full_sorted.png")
 
-data[["InsertionEqual", "HeapEqual", "QuickEqual", "RadixLSDEqual"]].plot(linewidth=4)
+# data[["InsertionEqual", "HeapEqual", "QuickEqual", "RadixLSDEqual"]].plot(linewidth=4)
 
-plt.savefig("full_equal.png")
+# plt.savefig("full_equal.png")
 
-data[["InsertionReversed", "HeapReversed", "QuickReversed", "RadixLSDReversed"]].plot(linewidth=4)
+# data[["InsertionReversed", "HeapReversed", "QuickReversed", "RadixLSDReversed"]].plot(linewidth=4)
 
-plt.savefig("full_reversed.png")
+# plt.savefig("full_reversed.png")
 
 # small = data[:15]
 
