@@ -36,7 +36,7 @@ int partition(std::vector<int>& list, int left, int right) {
 
 void quickSortRun(std::vector<int>& list, int left, int right) {
    if (left < right) {
-      int q = partitionWithRandomPivot(list, left, right);
+      int q = partition(list, left, right);
       quickSortRun(list, left, q);
       quickSortRun(list, q + 1, right);
    }

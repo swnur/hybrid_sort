@@ -1,4 +1,4 @@
-Size Insertion Heap Quick RadixLSD InsertionSorted HeapSorted QuickSorted RadixLSDSorted InsertionEqual HeapEqual QuickEqual RadixLSDEqual InsertionReversed HeapReversed QuickReversed RadixLSDReversed
+Size Insertion Heap Quick RadixLSD InsertionSorted HeapSorted QuickSorted RadixLSDSorted 
 100 29405 27631 18025 23802 1345 25300 5790 18934 
 200 72817 44054 27486 32372 1731 41730 8541 32303 
 300 103817 46865 28865 30487 1688 44325 9168 30307 

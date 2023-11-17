@@ -17,7 +17,7 @@ std:: ostream& operator<<(std:: ostream& output, std:: vector<int> arr) {
 }
 
 
-void runTestCases(char sortingAlgorithm) {
+void runTestCases(void(*sortingAlgorithm)(std::vector<int>&)) {
    std::map<std::vector<int>, std::vector<int>> testCases = {
       {{4, 11, 3, 6, 0, 1, 8, 5}, {0, 1, 3, 4, 5, 6, 8, 11}},
       {{0, 3, 9400, 230, 430, 2, 0}, {0, 0, 2, 3, 230, 430, 9400}},
@@ -30,33 +30,11 @@ void runTestCases(char sortingAlgorithm) {
    for (auto& testCase : testCases) {
       std::vector<int> input = testCase.first;
       std::vector<int> expected = testCase.second;
-
-      switch(sortingAlgorithm) {
-         case 'q': 
-            quickSort(input);
-            break;
-         case 'h':
-            heapSort(input);
-            break;
-         case 'i':
-            insertionSort(input);
-            break;
-         case 'b':
-            insertionSortWithBinSearch(input);
-            break;
-         case 'r':
-            radixSortLSD(input);
-            break;
-         case 'c':
-            countingSort(input);
-            break;
-         default:
-            std::cout << "Wrong value was given" << std:: endl;
-      }
-
-      std::vector<int> result = input;
-      std::cout << result << std::endl;
-      assert(result == expected);
+      
+      sortingAlgorithm(input);
+      
+      std::cout << input << std::endl;
+      assert(input == expected);
    }
 
    std::cout << "All test cases passed!" << std::endl;
