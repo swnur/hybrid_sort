@@ -44,6 +44,10 @@ void runMeasurement(int sizeStep, int maxSize, int maxTimes, std:: ofstream& fil
    for (int size = sizeStep; size <= maxSize; size += sizeStep) {
       if (size == 100) {
          sizeStep = 100;
+      } else if (size == 1000) {
+         sizeStep = 500;
+      } else if (size == 10000) {
+         sizeStep = 1000;
       }
       ns total_time_insertion = ns(0);
       ns total_time_heap = ns(0);
@@ -134,11 +138,11 @@ void runMeasurement(int sizeStep, int maxSize, int maxTimes, std:: ofstream& fil
 }
 
 int main() {
-   const int maxSize = 10000;
+   const int maxSize = 20000;
    const int maxTimes = 100;
    const int sizeStep = 10;
 
-   std::ofstream file_out("final_results.txt");
+   std::ofstream file_out("final_results2.txt");
    if (!file_out.is_open()) {
       std::cerr << "Error opening file." << std::endl;
       return 1;
