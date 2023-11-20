@@ -15,26 +15,43 @@ data = data.set_index("Size")
 print("Loaded data:")
 print(data.head())
 
+data[["Insertion", "Heap", "Quick", "RadixLSD"]].plot(linewidth=4)
+plt.title("Randomly generated array")
+plt.savefig("random_full.png")
+
+data[["Heap", "Quick", "RadixLSD"]].plot(linewidth=4)
+plt.savefig("random_closer.png")
+
+data[["InsertionSorted", "HeapSorted", "QuickSorted", "RadixLSDSorted"]].plot(linewidth=4)
+plt.savefig("sorted_full.png")
+
+data[["InsertionEqual", "HeapEqual", "QuickEqual", "RadixLSDEqual"]].plot(linewidth=4)
+plt.savefig("equal_full.png")
+
+data[["InsertionReversed", "HeapReversed", "QuickReversed", "RadixLSDReversed"]].plot(linewidth=4)
+plt.savefig("reversed_full.png")
+
+data[["HeapReversed", "QuickReversed", "RadixLSDReversed"]].plot(linewidth=4)
+plt.savefig("reversed_closer.png")
+
+# data[["Insertion", "Heap", "Quick", "RadixLSD", "Hybrid"]].plot(linewidth=4)
+# plt.savefig("full.png")
 
 
-data[["Insertion", "Heap", "Quick", "RadixLSD", "Hybrid"]].plot(linewidth=4)
-plt.savefig("full.png")
+# data[["Heap", "Quick", "RadixLSD", "Hybrid"]].plot(linewidth=4)
+# plt.savefig("full2.png")
 
-plt.plot([1000, 3000, 5000, 7000, 10000, 20000, 30000, 40000, 50000, 60000, 100000])
-data[["Heap", "Quick", "RadixLSD", "Hybrid"]].plot(linewidth=4)
-plt.savefig("full2.png")
+# data[["InsertionSorted", "HeapSorted", "QuickSorted", "RadixLSDSorted", "HybridSorted"]].plot(linewidth=4)
+# plt.savefig("full_sorted.png")
 
-data[["InsertionSorted", "HeapSorted", "QuickSorted", "RadixLSDSorted", "HybridSorted"]].plot(linewidth=4)
-plt.savefig("full_sorted.png")
+# data[["InsertionEqual", "HeapEqual", "QuickEqual", "RadixLSDEqual", "HybridEqual"]].plot(linewidth=4)
+# plt.savefig("full_equal.png")
 
-data[["InsertionEqual", "HeapEqual", "QuickEqual", "RadixLSDEqual", "HybridEqual"]].plot(linewidth=4)
-plt.savefig("full_equal.png")
+# data[["InsertionReversed", "HeapReversed", "QuickReversed", "RadixLSDReversed", "HybridReversed"]].plot(linewidth=4)
+# plt.savefig("full_reversed.png")
 
-data[["InsertionReversed", "HeapReversed", "QuickReversed", "RadixLSDReversed", "HybridReversed"]].plot(linewidth=4)
-plt.savefig("full_reversed.png")
-
-data[["HeapReversed", "QuickReversed", "RadixLSDReversed", "HybridReversed"]].plot(linewidth=4)
-plt.savefig("reversed2.png")
+# data[["HeapReversed", "QuickReversed", "RadixLSDReversed", "HybridReversed"]].plot(linewidth=4)
+# plt.savefig("reversed2.png")
 
 # small = data[:15]
 
