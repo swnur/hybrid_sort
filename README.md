@@ -1,0 +1,3 @@
+
+Sorting algorithms lie at the core of computational efficiency, impacting a myriad of applications. Sorting is needed to speed up the work of programs: when we have a lot of data, we need to somehow organize it so that it is easy to search for and quickly process. On small data sets this is not noticeable, but when you need to work with hundreds of thousands of data units, sorting can either speed up the program or completely crash it. People have invented many sorting algorithms for different data and for different tasks.
+In this project, we present a hybrid sorting algorithm born from the fusion of insertion sort, heap sort, quicksort, and radix sort. 
