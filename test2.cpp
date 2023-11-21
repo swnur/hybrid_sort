@@ -49,11 +49,6 @@ void runMeasurement(int sizeStep, int maxSize, int maxTimes, std:: ofstream& fil
       } else if (size == 10000) {
          sizeStep = 1000;
       }
-      // ns total_time_insertion = ns(0);
-      // ns total_time_heap = ns(0);
-      // ns total_time_quick = ns(0);
-      // ns total_time_radix = ns(0);
-      // ns total_time_hybrid = ns(0);
 
       ns total_time_insertion_part = ns(0);
       ns total_time_heap_part = ns(0);
@@ -67,14 +62,8 @@ void runMeasurement(int sizeStep, int maxSize, int maxTimes, std:: ofstream& fil
          for (int i = 0; i < size; ++i) {
             list[i] = i;
          }
-         
-         // total_time_insertion += calculateSorting(list, insertionSort);
-         // total_time_heap += calculateSorting(list, heapSort);
-         // total_time_quick += calculateSorting(list, quickSort);
-         // total_time_radix += calculateSorting(list, radixSortLSD);
-         // total_time_hybrid += calculateSorting(list, hybridSort);
 
-         std::swap(list[0], list[list.size() - 1]);
+         std::swap(list[0], list[list.size()]);
 
          total_time_insertion_part += calculateSorting(list, insertionSort);
          total_time_heap_part += calculateSorting(list, heapSort);
@@ -84,11 +73,6 @@ void runMeasurement(int sizeStep, int maxSize, int maxTimes, std:: ofstream& fil
       }
 
       file_out << size << " " 
-         // << total_time_insertion.count() / maxTimes << " "
-         // << total_time_heap.count() / maxTimes << " "
-         // << total_time_quick.count() / maxTimes << " "
-         // << total_time_radix.count() / maxTimes << " "
-         // << total_time_hybrid.count() / maxTimes << " "
          << total_time_insertion_part.count() / maxTimes << " "
          << total_time_heap_part.count() / maxTimes << " "
          << total_time_quick_part.count() / maxTimes << " "

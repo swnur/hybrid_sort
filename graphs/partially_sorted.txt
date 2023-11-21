@@ -1,4 +1,4 @@
-Size Insertion Heap Quick RadixLSD Hybrid InsertionSorted HeapSorted QuickSorted RadixLSDSorted HybridSorted InsertionEqual HeapEqual QuickEqual RadixLSDEqual HybridEqual InsertionReversed HeapReversed QuickReversed RadixLSDReversed HybridReversed
+Size Insertion Heap Quick RadixLSD Hybrid 
 10 669 1838 810 4542 712
 20 920 3650 1078 7926 952
 30 1267 5486 1993 10021 1298

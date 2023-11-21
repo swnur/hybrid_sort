@@ -43,13 +43,12 @@ void runTestCases(void(*sortingAlgorithm)(std::vector<int>&, int, int)) {
 
 int main() {
    
-   // runTestCases(quickSort); // running test cases on Quick Sort
-   // runTestCases(heapSort); // running test cases on Heap Sort
-   // runTestCases(insertionSort); // running test cases on Insertion Sort
-   // runTestCases(radixSort); // running test cases on RadixSort
-   // runTestCases(hybridSort); // running test cases on Radix LSD(Least Significant Digit) Sort
+   runTestCases(quickSort); // running test cases on Quick Sort
+   runTestCases(heapSort); // running test cases on Heap Sort
+   runTestCases(insertionSort); // running test cases on Insertion Sort
+   runTestCases(radixSort); // running test cases on RadixSort
+   runTestCases(hybridSort); // running test cases on Radix LSD(Least Significant Digit) Sort
 
-   runTestCases(quickSortTest);
 
    return 0;
 }
