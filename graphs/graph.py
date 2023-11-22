@@ -40,6 +40,10 @@ data[["HeapReversed", "QuickReversed", "RadixLSDReversed"]].plot(linewidth=4)
 plt.title("Reversed array closer look")
 plt.savefig("reversed_closer.png")
 
+data[["Insertion", "Heap", "Quick", "RadixLSD", "Hybrid"]].plot(linewidth=4)
+plt.title("Partially sorted array")
+plt.savefig("partially_sorted.png")
+
 small = data[:5]
 
 small[["Insertion", "Heap", "Quick", "RadixLSD"]].plot(linewidth=4)
